@@ -7,11 +7,9 @@
 .headerpanel {
     background-repeat: no-repeat;
     background-color: #238f77;
-    min-height: 400px;
     background-position: center;
     background-size: cover;
 }
- 
 
 @font-face {
     font-family:'Rhesmanisa';
@@ -19,9 +17,10 @@
     format('opentype');
 }
 
-h1#name {
+h1 {
     font-family:'Rhesmanisa';   
-    font-size: 112px;
+    font-size: 80px;
+    color:rgb(255, 255, 255);
 }
 @font-face {
     font-family:'Montserrat-Thin';
@@ -117,41 +116,12 @@ a#backtotop:hover {
 }
 
 @media only screen and (max-width: 1430px) {
-    h1#name {
-        font-size: 80px;
-    }
 
-    h2#title {
-        font-size: 24px;
-    }
 }
 
 @media only screen and (max-width: 1199px) {
    .headerpanel {
        vertical-align: middle;
-    }
-
-    .photospace {
-        flex:1;
-        float:left;
-        width:13%;
-        border-radius: 50%;
-        min-width: 180px; 
-        padding-bottom: 30px;
-    }
-        
-    .nametitle {
-        flex:1;
-        float:center;
-        text-align:left;
-    }  
-
-    h1#name {
-        font-size: 80px;
-    }
-
-    h2#title {
-        font-size: 24px;
     }
 
     .grid-container {
@@ -166,61 +136,14 @@ a#backtotop:hover {
 @media only screen and (max-width: 991px) {
    .headerpanel {
         vertical-align: middle;
-    }
-    
-    .photospace {
-        flex:1;
-        float:left;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 50%;
-    }
-    
-    .nametitle {
-        flex:1;
-        float:center;
-        text-align:left;
-        padding:0px;
-        margin:auto;
-        max-width: 80%;
-    }
+    } 
 
-    h1#name {
-        font-size: 80px;
-    }
-
-    h2#title {
-        font-size: 24px;
-    }
-
-    #menuheading {
-        padding-top: 0px;
-    }
-    
-    .lhn {
-        margin-left: auto;
-        margin-right:auto;
-        text-align:center;
-        padding-right:0px;
-    }
-    
     .content {
         width:100%;
         padding-left: 4%;
         padding-right: 4%;
     }   
 
-    .workexperience {
-        display:block;
-    }
-
-    .findme {
-        width:100%;
-    }
-    
-    #socialmedia {
-     padding-left: 5%
-    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -228,45 +151,10 @@ a#backtotop:hover {
         vertical-align: none;
     }
  
-    .photospace {
-         flex:none;
-         float:none;
-         width:13%;
-         margin-top: 20px;
-         border-radius: 50%;
-         min-width: 180px; 
-         padding-bottom: 30px;
-         }
-            
-    .nametitle {
-        text-align:center;
-        margin-left: auto;
-        margin-right:auto;
-        padding-left:2%;
-    }
-
-    #menuheading {
-        padding-left: 0px;
-    }
-    h1#name {
-        font-size: 70px;
-    }
-
-    .menulinks {
-        padding-left: 0px;
-    }
-
     .grid-container {
         display:grid;
         grid-gap:2%;
         grid-template-columns: auto;
-    }
-
-    .lhn {
-        margin-left: auto;
-        margin-right:auto;
-        text-align:center;
-        padding-right:0px;
     }
 
     .content {
@@ -275,17 +163,5 @@ a#backtotop:hover {
         padding-right: 4%;
     }   
 
-    .workexperience {
-        display:block;
-    }
-
-    .findme {
-        display:block;
-    } 
-                    
-    #socialmedia { 
-        padding-top: 10px;   
-        padding-left:0%;           
-    }
 }
 
