@@ -1,0 +1,291 @@
+.fullpage {
+    background-color: #efefef;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+    
+.headerpanel {
+    background-repeat: no-repeat;
+    background-color: #238f77;
+    min-height: 400px;
+    background-position: center;
+    background-size: cover;
+}
+ 
+
+@font-face {
+    font-family:'Rhesmanisa';
+    src: url("rhesmanisa/rhesmanisa.otf")
+    format('opentype');
+}
+
+h1#name {
+    font-family:'Rhesmanisa';   
+    font-size: 112px;
+}
+@font-face {
+    font-family:'Montserrat-Thin';
+    src: url("Montserrat/Montserrat-Thin.ttf")
+    format('truetype');
+}
+
+h2#title {
+    font-family:'Montserrat-Thin';
+    font-size:28px;
+    padding-top:15px;
+}
+
+h3 {
+    font-size: 24px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+h4 {
+    font-size:18px;
+    padding-bottom: 10px;
+}
+
+.mainarea {
+     flex-wrap: wrap;
+     padding:0%;
+}
+
+#navbarSupportedContent{
+    vertical-align: middle;
+}
+
+.lhn {
+    align-items: center;
+    background-color:#1d1d1d;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+#menuheading {
+    padding-left:30px;
+}
+
+ul.menulinks {
+    font-size:16px;
+    line-height: 35px;
+    list-style: none;
+}
+
+a:link {
+    color: rgb(255, 255, 255);
+}
+  
+a:visited {
+    color: rgb(192, 192, 192);
+}
+  
+a:hover {
+    color: #0fc286;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn#add{
+    background-color: #ffcf2f;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold;
+    border-width: 0px;
+    color: fff;
+    font-size:18px;
+}
+.btn#portfolio:hover {
+    background-color: #ff9a15
+}
+
+.content {
+background-color: #efefef;
+}    
+
+a#backtotop:link {
+    color: #9e4e38;
+}
+
+a#backtotop:visited {
+    color: #9e4e38;
+}
+
+a#backtotop:hover {
+    color: #fbad8e;
+}
+
+@media only screen and (max-width: 1430px) {
+    h1#name {
+        font-size: 80px;
+    }
+
+    h2#title {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+   .headerpanel {
+       vertical-align: middle;
+    }
+
+    .photospace {
+        flex:1;
+        float:left;
+        width:13%;
+        border-radius: 50%;
+        min-width: 180px; 
+        padding-bottom: 30px;
+    }
+        
+    .nametitle {
+        flex:1;
+        float:center;
+        text-align:left;
+    }  
+
+    h1#name {
+        font-size: 80px;
+    }
+
+    h2#title {
+        font-size: 24px;
+    }
+
+    .grid-container {
+        display:grid;
+        grid-gap:2%;
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: auto auto;
+    }
+}    
+
+
+@media only screen and (max-width: 991px) {
+   .headerpanel {
+        vertical-align: middle;
+    }
+    
+    .photospace {
+        flex:1;
+        float:left;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+    }
+    
+    .nametitle {
+        flex:1;
+        float:center;
+        text-align:left;
+        padding:0px;
+        margin:auto;
+        max-width: 80%;
+    }
+
+    h1#name {
+        font-size: 80px;
+    }
+
+    h2#title {
+        font-size: 24px;
+    }
+
+    #menuheading {
+        padding-top: 0px;
+    }
+    
+    .lhn {
+        margin-left: auto;
+        margin-right:auto;
+        text-align:center;
+        padding-right:0px;
+    }
+    
+    .content {
+        width:100%;
+        padding-left: 4%;
+        padding-right: 4%;
+    }   
+
+    .workexperience {
+        display:block;
+    }
+
+    .findme {
+        width:100%;
+    }
+    
+    #socialmedia {
+     padding-left: 5%
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .headerpanel {
+        vertical-align: none;
+    }
+ 
+    .photospace {
+         flex:none;
+         float:none;
+         width:13%;
+         margin-top: 20px;
+         border-radius: 50%;
+         min-width: 180px; 
+         padding-bottom: 30px;
+         }
+            
+    .nametitle {
+        text-align:center;
+        margin-left: auto;
+        margin-right:auto;
+        padding-left:2%;
+    }
+
+    #menuheading {
+        padding-left: 0px;
+    }
+    h1#name {
+        font-size: 70px;
+    }
+
+    .menulinks {
+        padding-left: 0px;
+    }
+
+    .grid-container {
+        display:grid;
+        grid-gap:2%;
+        grid-template-columns: auto;
+    }
+
+    .lhn {
+        margin-left: auto;
+        margin-right:auto;
+        text-align:center;
+        padding-right:0px;
+    }
+
+    .content {
+        width:100%;
+        padding-left: 4%;
+        padding-right: 4%;
+    }   
+
+    .workexperience {
+        display:block;
+    }
+
+    .findme {
+        display:block;
+    } 
+                    
+    #socialmedia { 
+        padding-top: 10px;   
+        padding-left:0%;           
+    }
+}
+
