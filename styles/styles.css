@@ -4,34 +4,33 @@
     font-size: 14px;
 }
     
-.headerpanel {
-    background-repeat: no-repeat;
-    background-color: #238f77;
-    background-position: center;
-    background-size: cover;
-}
-
 @font-face {
     font-family:'Rhesmanisa';
     src: url("rhesmanisa/rhesmanisa.otf")
     format('opentype');
 }
 
-h1 {
-    font-family:'Rhesmanisa';   
-    font-size: 80px;
-    color:rgb(255, 255, 255);
-}
 @font-face {
     font-family:'Montserrat-Thin';
     src: url("Montserrat/Montserrat-Thin.ttf")
     format('truetype');
 }
 
-h2#title {
+.headerpanel {
+    background-repeat: no-repeat;
+    background-color: #238f77;
+    background-position: center;
+    background-size: cover;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
+h2 {
     font-family:'Montserrat-Thin';
     font-size:28px;
     padding-top:15px;
+    color: #fff;
 }
 
 h3 {
@@ -46,21 +45,44 @@ h4 {
 }
 
 .mainarea {
-     flex-wrap: wrap;
-     padding:0%;
-}
-
-#navbarSupportedContent{
-    vertical-align: middle;
+    display:flex;
+    flex-wrap: wrap;
+    padding:0%;
 }
 
 .lhn {
-    align-items: center;
     background-color:#1d1d1d;
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
+.addNew{
+    flex:1;
+    float: inline-start;
+    background-color: #efefef;
+}
 
+#taskName {
+   min-width: 275px; 
+   height:40px;
+   border-radius: 4px;
+   border-style: solid;
+   border-width: 2px;
+   border-color: #ffcf2f;
+   margin-right:10px;
+   margin-bottom: 20px;
+}
+
+ .btn#add{
+    height:40px;
+    background-color: #ffcf2f;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold;
+    border-width: 0px;
+    color: #1d1d1d;
+    font-size:18px;
+    max-width: 200px;
+ }
+ 
 #menuheading {
     padding-left:30px;
 }
@@ -87,20 +109,12 @@ a {
     text-decoration: none;
 }
 
-.btn#add{
-    background-color: #ffcf2f;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:bold;
-    border-width: 0px;
-    color: fff;
-    font-size:18px;
-}
-.btn#portfolio:hover {
+.btn#Add:hover {
     background-color: #ff9a15
 }
 
 .content {
-background-color: #efefef;
+    background-color: #efefef;
 }    
 
 a#backtotop:link {
@@ -123,13 +137,6 @@ a#backtotop:hover {
    .headerpanel {
        vertical-align: middle;
     }
-
-    .grid-container {
-        display:grid;
-        grid-gap:2%;
-        grid-template-columns: auto auto auto auto;
-        grid-template-rows: auto auto;
-    }
 }    
 
 
@@ -151,10 +158,6 @@ a#backtotop:hover {
         vertical-align: none;
     }
  
-    .grid-container {
-        display:grid;
-        grid-gap:2%;
-        grid-template-columns: auto;
     }
 
     .content {
