@@ -16,8 +16,7 @@
     format('truetype');
 }
 
-.headerpanel {
-    background-repeat: no-repeat;
+.addPanel {
     background-color: #238f77;
     background-position: center;
     background-size: cover;
@@ -55,14 +54,13 @@ h4 {
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
-.addNew{
-    flex:1;
-    float: inline-start;
-    background-color: #efefef;
+#addNew{
+    width:100%;
 }
 
 #taskName {
-   min-width: 275px; 
+   flex:1;
+   width:50%; 
    height:40px;
    border-radius: 4px;
    border-style: solid;
@@ -73,6 +71,7 @@ h4 {
 }
 
  .btn#add{
+    flex:1;
     height:40px;
     background-color: #ffcf2f;
     font-family: 'Montserrat', sans-serif;
@@ -139,7 +138,6 @@ a#backtotop:hover {
     }
 }    
 
-
 @media only screen and (max-width: 991px) {
    .headerpanel {
         vertical-align: middle;
@@ -150,14 +148,11 @@ a#backtotop:hover {
         padding-left: 4%;
         padding-right: 4%;
     }   
-
 }
 
 @media only screen and (max-width: 767px) {
     .headerpanel {
         vertical-align: none;
-    }
- 
     }
 
     .content {
@@ -165,6 +160,5 @@ a#backtotop:hover {
         padding-left: 4%;
         padding-right: 4%;
     }   
-
 }
 
