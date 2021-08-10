@@ -81,6 +81,16 @@ h4 {
     font-size:18px;
     max-width: 200px;
  }
+ .btn#sort{
+    height:40px;
+    background-color: #4abb99;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold;
+    border-width: 0px;
+    color: #1d1d1d;
+    font-size:18px;
+    max-width: 200px;
+ }
  
 #menuheading {
     padding-left:30px;
