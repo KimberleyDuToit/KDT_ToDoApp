@@ -4,7 +4,7 @@ const addButton = document.getElementById("add");
 const taskList = document.getElementById("taskList");
 const sortButton = document.getElementById("sort");
 
-//Onclick
+//Onclick events
 addButton.addEventListener("click", addTask)
 taskList.addEventListener("click", tickItem)
 sortButton.addEventListener("click", sortAZ)
@@ -23,7 +23,7 @@ function addTask (){
         } //add list item to taskList
         taskInput.value = "";  
 
-//delete BUTTON
+//delete from list
     const deleteButton = document.createElement("span");
     deleteButton.innerHTML ='\u00D7';
     deleteButton.className = "remove";
