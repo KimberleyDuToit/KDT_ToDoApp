@@ -58,7 +58,7 @@ h4 {
     width:100%;
 }
 
-#taskName {
+#writeTaskName {
    flex:1;
    width:50%; 
    height:40px;
@@ -101,6 +101,11 @@ ul{
     line-height: 35px;
     list-style: none;
 }
+
+.remove{
+    padding-left: 20px;
+}
+
 
 a:link {
     color: rgb(255, 255, 255);

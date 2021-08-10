@@ -1,14 +1,36 @@
-// Add a new item to the list
-function newToDo (){
-    let li = document.createElement("li");
-    let taskInfo = document.getElementById("taskName").value;
-    let task = document.createTextNode(taskInfo);
-        li.appendChild (task);
-        if (taskInfo === ''){
+//Variables for use throughout, linked to elements in DOM
+const taskInput = document.getElementById("writeTaskName");
+const addButton = document.getElementById("add");
+const taskList = document.getElementById("taskList");
+const sortButton = document.getElementById("sort");
+
+//Onclick
+addButton.addEventListener("click", addTask)
+taskList.addEventListener("click", tickItem)
+sortButton.addEventListener("click", sortAZ)
+
+//Add task to list
+function addTask (){
+    let liNew = document.createElement("li");
+    let taskName = taskInput.value;
+    let taskOutput = document.createTextNode(taskName);
+        liNew.appendChild (taskOutput);
+        if (taskName === ''){
             alert ("Please enter a task name.");
         } //in case field is empty upon add
         else {
-            document.getElementById("taskList").appendChild(li);
-        }
-        document.getElementById("taskName").value = "";
+            taskList.appendChild(liNew);
+        } //add list item to taskList
+        taskInput.value = "";  
+
+//delete BUTTON
+    const deleteButton = document.createElement("span");
+    deleteButton.innerHTML ='\u00D7';
+    deleteButton.className = "remove";
+    liNew.appendChild(deleteButton);
+    deleteButton.addEventListener("click", removeItem)
+    function removeItem(){
+              let div = this.parentElement;
+              div.style.display = "none";
+    }
 }
