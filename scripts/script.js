@@ -25,7 +25,7 @@ function addTask (){
         } //add list item to taskList
         taskInput.value = "";
 
-    const dateOutput = document.createTextNode(' ' + dueDate);
+    /*const dateOutput = document.createTextNode(' ' + dueDate);
         liNew.appendChild (dateOutput);
         if (taskName === '' || dueDate === ''){
             alert ("Please enter a task name and due date.");
@@ -33,7 +33,7 @@ function addTask (){
         else {
             taskList.appendChild(liNew);
         } //add list item to taskList
-        taskDate.value = "";
+        taskDate.value = "";*/
 
     liNew.className = "liNew";
     dateOutput.className = "dateCol";
