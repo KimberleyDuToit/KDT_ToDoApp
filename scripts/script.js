@@ -20,7 +20,9 @@ function addTask (){
         else {
             taskList.appendChild(liNew);
         } //add list item to taskList
-        taskInput.value = "";  
+        taskInput.value = "";
+    console.log(taskOutput); 
+    liNew.className = "liNew";
 
     //tick box
     const doneButton = document.createElement("input");
@@ -30,11 +32,11 @@ function addTask (){
     doneButton.addEventListener("click", tickItem)
     function tickItem(ev){
         ev.target.classList.toggle('checked');
-        //.style.textDecoration = "line-through";
+        liNew.classList.toggle('strike');
     }
 
     //delete from list
-    const deleteButton = document.createElement("span");
+    const deleteButton = document.createElement("button");
     deleteButton.innerHTML ='\u00D7';
     deleteButton.className = "remove";
     liNew.appendChild(deleteButton);
