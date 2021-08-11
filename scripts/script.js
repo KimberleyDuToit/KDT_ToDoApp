@@ -28,8 +28,9 @@ function addTask (){
     doneButton.className = "done";
     liNew.prepend(doneButton);
     doneButton.addEventListener("click", tickItem)
-    function tickItem(){
+    function tickItem(ev){
         ev.target.classList.toggle('checked');
+        //.style.textDecoration = "line-through";
     }
 
     //delete from list
