@@ -6,7 +6,6 @@ const sortButton = document.getElementById("sort");
 
 //Onclick events
 addButton.addEventListener("click", addTask)
-taskList.addEventListener("click", tickItem)
 sortButton.addEventListener("click", sortAZ)
 
 //Add task to list
@@ -23,7 +22,17 @@ function addTask (){
         } //add list item to taskList
         taskInput.value = "";  
 
-//delete from list
+    //tick box
+    const doneButton = document.createElement("input");
+    doneButton.setAttribute("type","checkbox");
+    doneButton.className = "done";
+    liNew.prepend(doneButton);
+    doneButton.addEventListener("click", tickItem)
+    function tickItem(){
+        ev.target.classList.toggle('checked');
+    }
+
+    //delete from list
     const deleteButton = document.createElement("span");
     deleteButton.innerHTML ='\u00D7';
     deleteButton.className = "remove";

@@ -32,6 +32,12 @@ h2 {
     color: #fff;
 }
 
+h2#tasks {
+    color: #1d1d1d;
+    flex: 1;
+    padding: 0px;
+}
+
 h3 {
     font-size: 24px;
     padding-bottom: 20px;
@@ -43,10 +49,13 @@ h4 {
     padding-bottom: 10px;
 }
 
-.mainarea {
-    display:flex;
-    flex-wrap: wrap;
+.mainArea {
     padding:0%;
+}
+
+#tHeaders {
+    display:flex;
+    vertical-align: center;
 }
 
 .lhn {
@@ -81,6 +90,7 @@ h4 {
     font-size:18px;
     max-width: 200px;
  }
+
  .btn#sort{
     height:40px;
     background-color: #4abb99;
@@ -90,22 +100,27 @@ h4 {
     color: #1d1d1d;
     font-size:18px;
     max-width: 200px;
+    flex: 1;
  }
  
 #menuheading {
     padding-left:30px;
 }
 
-ul{
+ul {
     font-size:16px;
     line-height: 35px;
     list-style: none;
+    padding-left: 0px;
 }
 
-.remove{
+.remove {
     padding-left: 20px;
 }
 
+.done {
+    margin-right: 20px;
+}
 
 a:link {
     color: rgb(255, 255, 255);
