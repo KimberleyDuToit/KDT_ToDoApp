@@ -1,6 +1,7 @@
 //Variables for use throughout, linked to elements in DOM
 const taskInput = document.getElementById("writeTaskName");
 const addButton = document.getElementById("add");
+const taskDate = document.getElementById("date");
 const taskList = document.getElementById("taskList");
 const sortButton = document.getElementById("sort");
 
@@ -12,17 +13,30 @@ sortButton.addEventListener("click", sortAZ)
 function addTask (){
     let liNew = document.createElement("li");
     let taskName = taskInput.value;
-    let taskOutput = document.createTextNode(taskName);
+    let dueDate = taskDate.value;
+
+    const taskOutput = document.createTextNode(taskName);
         liNew.appendChild (taskOutput);
-        if (taskName === ''){
-            alert ("Please enter a task name.");
+        if (taskName === '' || dueDate === ''){
+            alert ("Please enter a task name and due date.");
         } //in case field is empty upon add
         else {
             taskList.appendChild(liNew);
         } //add list item to taskList
         taskInput.value = "";
-    console.log(taskOutput); 
+
+    const dateOutput = document.createTextNode(' ' + dueDate);
+        liNew.appendChild (dateOutput);
+        if (taskName === '' || dueDate === ''){
+            alert ("Please enter a task name and due date.");
+        } //in case field is empty upon add
+        else {
+            taskList.appendChild(liNew);
+        } //add list item to taskList
+        taskDate.value = "";
+
     liNew.className = "liNew";
+    dateOutput.className = "dateCol";
 
     //tick box
     const doneButton = document.createElement("input");
