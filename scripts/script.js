@@ -40,7 +40,8 @@ function addTask (){
     doneButton.addEventListener("click", tickItem)
     function tickItem(ev){
         ev.target.classList.toggle('checked');
-        liNew.classList.toggle('strike');
+        taskOutput.classList.toggle('strike');
+        
     }
 
     //delete from list
