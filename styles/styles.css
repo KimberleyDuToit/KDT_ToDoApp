@@ -147,31 +147,35 @@ ul {
 }
 
 .li {
-    display: flex;
+    
 }
 
 .liNew {
+    display: grid;
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
 .dateCol {
-    margin-left: 40px;
+    grid-column-start: 3;
+    grid-column-end: 3;
 }
 
 .remove {
-    margin-left: 20px;
+    grid-column-start: 4;
+    grid-column-end: 4;
     border-radius: 3px;
     background-color: rgb(161, 161, 161);
     border-style: none;
     width: 40px;
     height: 40px;
     font-size: 20px;
-    float: right;
 }
 
 .done {
-    margin-right: 20px;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    column-width: 10%;
 }
 
 a:link {

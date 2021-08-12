@@ -3,18 +3,15 @@ const taskInput = document.getElementById("writeTaskName");
 const addButton = document.getElementById("add");
 const taskDate = document.getElementById("date");
 const taskList = document.getElementById("taskList");
-const sortButton = document.getElementById("sort");
 
 //Onclick events
 addButton.addEventListener("click", addTask)
-sortButton.addEventListener("click", sortAZ)
 
 //Add task to list
 function addTask (){
-    let liNew = document.createElement("li");
-    let taskName = taskInput.value;
-    let dueDate = taskDate.value;
-
+    const liNew = document.createElement("li");
+    const taskName = taskInput.value;
+    const dueDate = taskDate.value;
     const taskOutput = document.createTextNode(taskName);
         liNew.appendChild (taskOutput);
         if (taskName === '' || dueDate === ''){
@@ -24,8 +21,8 @@ function addTask (){
             taskList.appendChild(liNew);
         } //add list item to taskList
         taskInput.value = "";
-
-    const dateOutput = document.createTextNode(' ' + dueDate);
+        liNew.className = "liNew";
+    /*const dateOutput = document.createTextNode(' ' + dueDate);
         liNew.appendChild (dateOutput);
         if (taskName === '' || dueDate === ''){
             alert ("Please enter a task name and due date.");
@@ -35,7 +32,15 @@ function addTask (){
         } //add list item to taskList
         taskDate.value = "";
 
-    liNew.className = "liNew";
+    
+    liNew.date = dateOutput.value;
+    liNew.task = taskOutput.value; */
+
+    //date
+    const dateOutput = document.createElement("span");
+    dateOutput.innerHTML = dueDate;
+    dateOutput.className = "dateCol";
+    liNew.appendChild(dateOutput);
 
     //tick box
     const doneButton = document.createElement("input");
