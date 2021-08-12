@@ -7,12 +7,15 @@ const taskList = document.getElementById("taskList");
 //Onclick events
 addButton.addEventListener("click", addTask)
 
-//Add task to list
 function addTask (){
     const liNew = document.createElement("li");
     const taskName = taskInput.value;
     const dueDate = taskDate.value;
-    const taskOutput = document.createTextNode(taskName);
+
+//Add task to list
+    const taskOutput = document.createElement("span");
+    taskOutput.innerHTML = taskName;
+    taskOutput.className = "task";
         liNew.appendChild (taskOutput);
         if (taskName === '' || dueDate === ''){
             alert ("Please enter a task name and due date.");
@@ -22,20 +25,7 @@ function addTask (){
         } //add list item to taskList
         taskInput.value = "";
         liNew.className = "liNew";
-    /*const dateOutput = document.createTextNode(' ' + dueDate);
-        liNew.appendChild (dateOutput);
-        if (taskName === '' || dueDate === ''){
-            alert ("Please enter a task name and due date.");
-        } //in case field is empty upon add
-        else {
-            taskList.appendChild(liNew);
-        } //add list item to taskList
-        taskDate.value = "";
-
-    
-    liNew.date = dateOutput.value;
-    liNew.task = taskOutput.value; */
-
+   
     //date
     const dateOutput = document.createElement("span");
     dateOutput.innerHTML = dueDate;

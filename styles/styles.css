@@ -146,19 +146,27 @@ ul {
     text-decoration: line-through;
 }
 
-.li {
-    
-}
-
 .liNew {
     display: grid;
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
+.done {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    column-width: 10%;
+}
+
+.task {
+    grid-column-start: 2;
+    grid-column-end: 2;
+}
+
 .dateCol {
     grid-column-start: 3;
     grid-column-end: 3;
+    column-width: 50%;
 }
 
 .remove {
@@ -170,11 +178,6 @@ ul {
     width: 40px;
     height: 40px;
     font-size: 20px;
-}
-
-.done {
-    grid-column-start: 1;
-    grid-column-end: 1;
     column-width: 10%;
 }
 
