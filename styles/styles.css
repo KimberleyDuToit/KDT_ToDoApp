@@ -148,7 +148,8 @@ ul {
 
 .liNew {
     display: grid;
-    grid-template-columns: 5% 70% 20% 5%;
+    grid-template-columns: 5% 55% 20% 6% 6%;
+    grid-column-gap: 2%;
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -177,6 +178,19 @@ ul {
 }
 
 .remove {
+    grid-column-start: 5;
+    grid-column-end: 5;
+    border-radius: 3px;
+    background-color: rgb(161, 161, 161);
+    border-style: none;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit {
     grid-column-start: 4;
     grid-column-end: 4;
     border-radius: 3px;

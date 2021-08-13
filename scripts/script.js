@@ -41,8 +41,21 @@ function addTask (){
     function tickItem(ev){
         ev.target.classList.toggle('checked');
         taskOutput.classList.toggle('strike');
+    }
+
+    //edit
+    const editButton = document.createElement("button");
+    editButton.innerHTML ='&#128393';
+    editButton.className = "edit";
+    liNew.appendChild(editButton);
+    editButton.addEventListener("click", editItem)
+    function editItem(){
+        liNew.contentEditable = true;
+        liNew.style.backgroundColor = "#dddbdb"; 
+        
         
     }
+    
 
     //delete from list
     const deleteButton = document.createElement("button");
