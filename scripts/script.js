@@ -48,15 +48,25 @@ function addTask (){
     editButton.innerHTML ='&#128393';
     editButton.className = "edit";
     liNew.appendChild(editButton);
-    editButton.addEventListener("click", editItem)
+    editButton.addEventListener("click", editItem);
     function editItem(){
-        liNew.contentEditable = true;
-        liNew.style.backgroundColor = "#dddbdb"; 
-        
-        
+        taskOutput.contentEditable = true;
+        dateOutput.contentEditable = true;
+        liNew.style.backgroundColor = "#dddbdb";
     }
-    
 
+    //editOff
+    const editDone = document.createElement("button");
+    editDone.innerHTML ='&#10003';
+    editDone.className = "edited";
+    liNew.appendChild(editDone);
+    editDone.addEventListener("click", editOff);
+        function editOff(){
+            taskOutput.contentEditable = false;
+            dateOutput.contentEditable = false;
+            liNew.style.backgroundColor = "#efefef";
+    }
+        
     //delete from list
     const deleteButton = document.createElement("button");
     deleteButton.innerHTML ='\u00D7';
