@@ -66,6 +66,7 @@ function createTaskObject(){
             taskCreated.status = false;
         }
         console.log (taskCreated);
+        console.log (taskArr);
     }
   
     //edit
@@ -89,6 +90,7 @@ function createTaskObject(){
         taskCreated.dueDate = dateOutput.innerHTML;
         taskCreated.taskName = taskOutput.innerHTML;
         console.log (taskCreated);
+        console.log (taskArr);
     }
 
     //delete from list
