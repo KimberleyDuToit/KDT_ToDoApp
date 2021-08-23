@@ -5,17 +5,31 @@ const taskDate = document.getElementById("date");
 const taskList = document.getElementById("taskList");
 const sortAZ = document.getElementById("sort");
 
+//Class for tasks
+class TaskObj {
+    constructor (taskName, dueDate, status, editable) {
+        this.taskName = taskName;
+        this.dueDate = dueDate;
+        this.status = status;
+        this.editable = editable;
+    }
+}
 //Onclick events
-addButton.addEventListener("click", addTask)
+addButton.addEventListener("click", createTaskObject)
 
-function addTask() {
+function createTaskObject(){
     const liNew = document.createElement("li");
-    const taskName = taskInput.value;
-    const dueDate = taskDate.value;
-
+    let taskName = taskInput.value;
+    let dueDate = taskDate.value;
+    let status = false;
+    let editable = false;
+    
+    let taskCreated = new TaskObj(taskName, dueDate, status, editable);
+    console.log(taskCreated);
+    
     //Add task to list
     const taskOutput = document.createElement("span");
-    taskOutput.innerHTML = taskName;
+    taskOutput.innerHTML = taskCreated.taskName;
     taskOutput.className = "task";
     liNew.appendChild(taskOutput);
     if (taskName === '' || dueDate === '') {
@@ -42,8 +56,14 @@ function addTask() {
     function tickItem(ev) {
         ev.target.classList.toggle('checked');
         taskOutput.classList.toggle('strike');
+        if (taskCreated.status === false){
+            taskCreated.status = true;
+        } else {
+            taskCreated.status = false;
+        }
+        console.log (taskCreated);
     }
-
+  
     //edit
     const editButton = document.createElement("button");
     editButton.innerHTML = '&#128393';
@@ -51,21 +71,20 @@ function addTask() {
     liNew.appendChild(editButton);
     editButton.addEventListener("click", editItem);
     function editItem() {
-        taskOutput.contentEditable = true;
-        dateOutput.contentEditable = true;
-        liNew.style.backgroundColor = "#dddbdb";
-    }
-
-    //editOff
-    const editDone = document.createElement("button");
-    editDone.innerHTML = '&#10003';
-    editDone.className = "edited";
-    liNew.appendChild(editDone);
-    editDone.addEventListener("click", editOff);
-    function editOff() {
-        taskOutput.contentEditable = false;
-        dateOutput.contentEditable = false;
-        liNew.style.backgroundColor = "#efefef";
+        if (taskCreated.editable === false){
+            taskOutput.contentEditable = true;
+            dateOutput.contentEditable = true;
+            taskCreated.editable = true;
+            liNew.style.backgroundColor = "#dddbdb";
+        } else {
+            taskOutput.contentEditable = false;
+            dateOutput.contentEditable = false;
+            taskCreated.editable = false;
+            liNew.style.backgroundColor = "#efefef";
+        }
+        taskCreated.dueDate = dateOutput.innerHTML;
+        taskCreated.taskName = taskOutput.innerHTML;
+        console.log (taskCreated);
     }
 
     //delete from list
@@ -78,10 +97,13 @@ function addTask() {
         let div = this.parentElement;
         div.style.display = "none";
     }
+}
 
+
+/*
     //sort
         sortAZ.addEventListener("click", sortList);
     function sortList() {
         
     }
-}
+}*/
