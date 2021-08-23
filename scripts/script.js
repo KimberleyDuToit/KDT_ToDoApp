@@ -4,6 +4,7 @@ const addButton = document.getElementById("add");
 const taskDate = document.getElementById("date");
 const taskList = document.getElementById("taskList");
 const sortAZ = document.getElementById("sort");
+let taskArr = [];
 
 //Class for tasks
 class TaskObj {
@@ -19,14 +20,17 @@ addButton.addEventListener("click", createTaskObject)
 
 function createTaskObject(){
     const liNew = document.createElement("li");
-    let taskName = taskInput.value;
+    let taskName = taskInput.value; 
     let dueDate = taskDate.value;
     let status = false;
     let editable = false;
-    
+   
     let taskCreated = new TaskObj(taskName, dueDate, status, editable);
     console.log(taskCreated);
+    taskArr.push(taskCreated);
+    console.log (taskArr);
     
+
     //Add task to list
     const taskOutput = document.createElement("span");
     taskOutput.innerHTML = taskCreated.taskName;

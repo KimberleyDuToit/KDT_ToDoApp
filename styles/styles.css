@@ -178,8 +178,8 @@ ul {
 }
 
 .remove {
-    grid-column-start: 6;
-    grid-column-end: 6;
+    grid-column-start: 5;
+    grid-column-end: 5;
     border-radius: 3px;
     background-color: rgb(161, 161, 161);
     border-style: none;
@@ -203,18 +203,7 @@ ul {
     margin-right: auto;
 }
 
-.edited {
-    grid-column-start: 5;
-    grid-column-end: 5;
-    border-radius: 3px;
-    background-color: rgb(161, 161, 161);
-    border-style: none;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 a:link {
     color: rgb(255, 255, 255);
