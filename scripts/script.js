@@ -26,10 +26,6 @@ function createTaskObject(){
     let editable = false;
    
     let taskCreated = new TaskObj(taskName, dueDate, status, editable);
-    console.log(taskCreated);
-    taskArr.push(taskCreated);
-    console.log (taskArr);
-    
 
     //Add task to list
     const taskOutput = document.createElement("span");
@@ -41,6 +37,9 @@ function createTaskObject(){
     } //in case field is empty upon add
     else {
         taskList.appendChild(liNew);
+        console.log(taskCreated);
+        taskArr.push(taskCreated);
+        console.log (taskArr);
     } //add list item to taskList
     taskInput.value = "";
     liNew.className = "liNew";
