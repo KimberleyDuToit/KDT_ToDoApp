@@ -4,6 +4,7 @@ const addButton = document.getElementById("add");
 const taskDate = document.getElementById("date");
 const taskList = document.getElementById("taskList");
 const sortAZ = document.getElementById("sort");
+const sortDue = document.getElementById("sortDate");
 let taskArr = [];
 
 //Class for tasks
@@ -17,6 +18,8 @@ class TaskObj {
 }
 //Onclick events
 addButton.addEventListener("click", createTaskObject)
+sortAZ.addEventListener("click", sortByName)
+sortDue.addEventListener("click", sortByDate)
 
 function createTaskObject(){
     const liNew = document.createElement("li");
@@ -104,11 +107,24 @@ function createTaskObject(){
     }
 }
 
+function sortByName (){
+    taskArr.sort(function(a, b){
+        var taskNameA=a.taskName.toLowerCase(), taskNameB=b.taskName.toLowerCase()
+        if (taskNameA < taskNameB) //sort string ascending
+            return -1 
+        if (taskNameA > taskNameB)
+            return 1
+        return 0
+    })
+    function sortListAZ() {
+      }
+    console.log (taskArr)
+}
 
-/*
-    //sort
-        sortAZ.addEventListener("click", sortList);
-    function sortList() {
-        
-    }
-}*/
+function sortByDate (){
+    taskArr.sort(function(a, b){
+        var dueDateA=new Date(a.dueDate), dueDateB=new Date(b.dueDate)
+        return dueDateA-dueDateB
+    }) 
+    console.log (taskArr)
+}
