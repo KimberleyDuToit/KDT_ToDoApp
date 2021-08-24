@@ -56,7 +56,7 @@ else { //pushes the stored elements to taskArr
     dateOutput.className = "dateCol";
     liNew.appendChild(dateOutput);
 
-    //tick box
+    //tick box - does not update the array
     const doneButton = document.createElement("input");
     doneButton.setAttribute("type", "checkbox");
     doneButton.className = "done";
@@ -72,6 +72,7 @@ else { //pushes the stored elements to taskArr
         }
         console.log(taskCreated);
         console.log(taskArr);
+        save()
     }
 
     //edit
@@ -172,6 +173,7 @@ function createTaskObject() {
         }
         console.log(taskCreated);
         console.log(taskArr);
+        save()
     }
 
     //edit
