@@ -5,7 +5,7 @@ const taskDate = document.getElementById("date");
 const taskList = document.getElementById("taskList");
 const sortAZ = document.getElementById("sort");
 const sortDue = document.getElementById("sortDate");
-let taskArr = [];
+
 
 //Class for tasks
 class TaskObj {
@@ -16,6 +16,22 @@ class TaskObj {
         this.editable = editable;
     }
 }
+
+
+//Array and storage
+let taskArr = [];
+let taskSaved = localStorage.getItem("taskArrStorage");
+let taskLoad = JSON.parse(taskSaved);
+if (taskLoad === null){
+    console.log ('No objects in array')
+} 
+else {
+    taskLoad.forEach(createTaskObject);
+    /*let mappedArr = taskLoad.map(x => x);
+    console.log (mappedArr);*/
+}
+
+
 //Onclick events
 addButton.addEventListener("click", createTaskObject)
 sortAZ.addEventListener("click", sortByName)
@@ -42,7 +58,7 @@ function createTaskObject() {
         taskList.appendChild(liNew);
         console.log(taskCreated);
         taskArr.push(taskCreated);
-        console.log(taskArr);
+        console.log('Array saved on task add');
     } //add list item to taskList
     taskInput.value = "";
     liNew.className = "liNew";
@@ -92,7 +108,6 @@ function createTaskObject() {
         taskCreated.dueDate = dateOutput.innerHTML;
         taskCreated.taskName = taskOutput.innerHTML;
         console.log(taskCreated);
-        console.log(taskArr);
     }
 
     //delete from list
@@ -105,6 +120,15 @@ function createTaskObject() {
         let div = this.parentElement;
         div.style.display = "none";
     }
+
+    //save array on task creation
+    if (taskArr.length > 0 & taskName !== '' & dueDate !== '') {
+        let taskArrStorage = JSON.stringify(taskArr);
+        localStorage.setItem("taskArrStorage", taskArrStorage);
+        console.log('Array Saved At End')
+        } else {
+            console.log ('No array saved')
+        }
 }
 
 function sortByName() {
@@ -161,7 +185,6 @@ function sortByName() {
                 }
             }
         }
-    console.log(taskArr);
 }
 
 function sortByDate() {
@@ -182,3 +205,12 @@ function sortByDate() {
     sortListByDate()
     console.log(taskArr)
 }
+
+/*//storing array
+if (taskArr.length > 0) {
+let taskArrStorage = JSON.stringify(taskArr);
+localStorage.setItem("taskArrStorage", taskArrStorage);
+console.log('array saved at end')
+} else {
+    console.log ('No array saved')
+}*/
