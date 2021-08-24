@@ -74,7 +74,7 @@ else { //pushes the stored elements to taskArr
         console.log(taskArr);
     }
 
-    //edit - 
+    //edit
     const editButton = document.createElement("button");
     editButton.innerHTML = '&#128393';
     editButton.className = "edit";
@@ -271,6 +271,7 @@ function sortByName() {
             }
         }
     }
+    save()
 }
 
 function sortByDate() {
