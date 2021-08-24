@@ -27,9 +27,92 @@ if (taskLoad === null) {
 else { //pushes the stored elements to taskArr
     taskArr.push(...taskLoad);
     console.log(taskArr);
-}
+    taskArr.forEach(ele => {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const liNew = document.createElement("li");
+    let taskName = this.taskName;
+    let dueDate = this.dueDate;
+    let status = this.status;
+    let editable = this.editable;
 
-//save array
+    let taskCreated = this;
+        //Add task to list
+    const taskOutput = document.createElement("span");
+    taskOutput.innerHTML = taskCreated.taskName;
+    taskOutput.className = "task";
+    liNew.appendChild(taskOutput);
+    if (taskName === '' || dueDate === '') {
+        alert("Please enter a task name and due date.");
+    } //in case field is empty upon add
+    else {
+        taskList.appendChild(liNew);
+    } //add list item to taskList
+    taskInput.value = "";
+    liNew.className = "liNew";
+
+    //date
+    const dateOutput = document.createElement("span");
+    dateOutput.innerHTML = taskCreated.dueDate;
+    dateOutput.className = "dateCol";
+    liNew.appendChild(dateOutput);
+
+    //tick box
+    const doneButton = document.createElement("input");
+    doneButton.setAttribute("type", "checkbox");
+    doneButton.className = "done";
+    liNew.prepend(doneButton);
+    doneButton.addEventListener("click", tickItem)
+    function tickItem(ev) {
+        ev.target.classList.toggle('checked');
+        taskOutput.classList.toggle('strike');
+        if (taskCreated.status === false) {
+            taskCreated.status = true;
+        } else {
+            taskCreated.status = false;
+        }
+        console.log(taskCreated);
+        console.log(taskArr);
+    }
+
+    //edit - works but does not edit item in array
+    const editButton = document.createElement("button");
+    editButton.innerHTML = '&#128393';
+    editButton.className = "edit";
+    liNew.appendChild(editButton);
+    editButton.addEventListener("click", editItem);
+    function editItem() {
+        if (taskCreated.editable === false) {
+            taskOutput.contentEditable = true;
+            dateOutput.contentEditable = true;
+            taskCreated.editable = true;
+            liNew.style.backgroundColor = "#dddbdb";
+        } else {
+            taskOutput.contentEditable = false;
+            dateOutput.contentEditable = false;
+            taskCreated.editable = false;
+            liNew.style.backgroundColor = "#efefef";
+        }
+        taskCreated.dueDate = dateOutput.innerHTML;
+        taskCreated.taskName = taskOutput.innerHTML;
+        console.log(taskCreated);
+        save()
+    }
+
+    //delete from list - works but does not remove item from array
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = '\u00D7';
+    deleteButton.className = "remove";
+    liNew.appendChild(deleteButton);
+    deleteButton.addEventListener("click", removeItem)
+    function removeItem() {
+        let div = this.parentElement;
+        div.style.display = "none";
+    }
+    });
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//save array to storage
 function save() {
     let taskArrStorage = JSON.stringify(taskArr);
     localStorage.setItem("taskArrStorage", taskArrStorage);
