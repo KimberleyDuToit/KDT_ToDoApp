@@ -35,7 +35,7 @@ else { //pushes the stored elements to taskArr
     let status = this.status;
     let editable = this.editable;
 
-    let taskCreated = this;
+    let taskCreated = ele;
         //Add task to list
     const taskOutput = document.createElement("span");
     taskOutput.innerHTML = taskCreated.taskName;
@@ -74,7 +74,7 @@ else { //pushes the stored elements to taskArr
         console.log(taskArr);
     }
 
-    //edit - works but does not edit item in array
+    //edit - 
     const editButton = document.createElement("button");
     editButton.innerHTML = '&#128393';
     editButton.className = "edit";
