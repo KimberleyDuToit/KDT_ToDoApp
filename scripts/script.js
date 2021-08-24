@@ -62,7 +62,7 @@ function createTaskObject() {
         taskList.appendChild(liNew);
         console.log(taskCreated);
         taskArr.push(taskCreated);
-        console.log('Array saved on task add');
+        console.log('Object saved on task add');
     } //add list item to taskList
     taskInput.value = "";
     liNew.className = "liNew";
@@ -125,6 +125,7 @@ function createTaskObject() {
         let div = this.parentElement;
         div.style.display = "none";
     }
+
     //save on task creation
     if (taskArr.length > 0 & taskName !== '' & dueDate !== '') {
         save()
