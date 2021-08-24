@@ -17,20 +17,24 @@ class TaskObj {
     }
 }
 
-
 //Array and storage
 let taskArr = [];
 let taskSaved = localStorage.getItem("taskArrStorage");
 let taskLoad = JSON.parse(taskSaved);
-if (taskLoad === null){
-    console.log ('No objects in array')
-} 
-else {
-    taskLoad.forEach(createTaskObject);
-    /*let mappedArr = taskLoad.map(x => x);
-    console.log (mappedArr);*/
+if (taskLoad === null) {
+    console.log('No objects in array')
+}
+else { //pushes the stored elements to taskArr
+    taskArr.push(...taskLoad);
+    console.log(taskArr);
 }
 
+//save array
+function save() {
+    let taskArrStorage = JSON.stringify(taskArr);
+    localStorage.setItem("taskArrStorage", taskArrStorage);
+    console.log('Array Stored in Local')
+}
 
 //Onclick events
 addButton.addEventListener("click", createTaskObject)
@@ -108,6 +112,7 @@ function createTaskObject() {
         taskCreated.dueDate = dateOutput.innerHTML;
         taskCreated.taskName = taskOutput.innerHTML;
         console.log(taskCreated);
+        save()
     }
 
     //delete from list
@@ -120,71 +125,68 @@ function createTaskObject() {
         let div = this.parentElement;
         div.style.display = "none";
     }
-
-    //save array on task creation
+    //save on task creation
     if (taskArr.length > 0 & taskName !== '' & dueDate !== '') {
-        let taskArrStorage = JSON.stringify(taskArr);
-        localStorage.setItem("taskArrStorage", taskArrStorage);
-        console.log('Array Saved At End')
-        } else {
-            console.log ('No array saved')
-        }
+        save()
+    } else {
+        console.log('No array saved')
+    }
 }
 
 function sortByName() {
     //sort list on UI by task name
-        var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
-        list = taskList;
-        switching = true;
-        dir = "AZ";
-        while (switching) {
-            switching = false;
-            b = list.getElementsByTagName("li");
-            for (i = 0; i < (b.length - 1); i++) {
-                shouldSwitch = false;
-                if (dir == "AZ") {
-                    sortAZ.innerHTML = 'Sort Z-A';
-                    //sort objects within array by task name A-Z
-                    taskArr.sort(function (a, b) {
-                        var taskNameA = a.taskName.toLowerCase(), taskNameB = b.taskName.toLowerCase()
-                        if (taskNameA < taskNameB)
-                            return -1
-                        if (taskNameA > taskNameB)
-                            return 1
-                        return 0
-                    })
-                    if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else if (dir == "ZA") {
-                    sortAZ.innerHTML = 'Sort A-Z';
-                    //sort objects within array by task name Z-A
-                    taskArr.sort(function (a, b) {
-                        var taskNameA = a.taskName.toLowerCase(), taskNameB = b.taskName.toLowerCase()
-                        if (taskNameB < taskNameA)
-                            return -1
-                        if (taskNameB > taskNameA)
-                            return 1
-                        return 0
-                    })
-                    if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
+    var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+    list = taskList;
+    switching = true;
+    dir = "AZ";
+    while (switching) {
+        switching = false;
+        b = list.getElementsByTagName("li");
+        for (i = 0; i < (b.length - 1); i++) {
+            shouldSwitch = false;
+            if (dir == "AZ") {
+                sortAZ.innerHTML = 'Sort Z-A';
+                //sort objects within array by task name A-Z
+                taskArr.sort(function (a, b) {
+                    var taskNameA = a.taskName.toLowerCase(), taskNameB = b.taskName.toLowerCase()
+                    if (taskNameA < taskNameB)
+                        return -1
+                    if (taskNameA > taskNameB)
+                        return 1
+                    return 0
+                })
+                if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
                 }
-            }
-            if (shouldSwitch) {
-                b[i].parentNode.insertBefore(b[i + 1], b[i]);
-                switching = true;
-                switchcount++;
-            } else {
-                if (switchcount == 0 && dir == "AZ") {
-                    dir = "ZA";
-                    switching = true;
+            } else if (dir == "ZA") {
+                sortAZ.innerHTML = 'Sort A-Z';
+                //sort objects within array by task name Z-A
+                taskArr.sort(function (a, b) {
+                    var taskNameA = a.taskName.toLowerCase(), taskNameB = b.taskName.toLowerCase()
+                    if (taskNameB < taskNameA)
+                        return -1
+                    if (taskNameB > taskNameA)
+                        return 1
+                    return 0
+                })
+                if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
                 }
             }
         }
+        if (shouldSwitch) {
+            b[i].parentNode.insertBefore(b[i + 1], b[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount == 0 && dir == "AZ") {
+                dir = "ZA";
+                switching = true;
+            }
+        }
+    }
 }
 
 function sortByDate() {
