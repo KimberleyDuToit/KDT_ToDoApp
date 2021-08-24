@@ -9,7 +9,7 @@ let taskArr = [];
 
 //Class for tasks
 class TaskObj {
-    constructor (taskName, dueDate, status, editable) {
+    constructor(taskName, dueDate, status, editable) {
         this.taskName = taskName;
         this.dueDate = dueDate;
         this.status = status;
@@ -21,13 +21,13 @@ addButton.addEventListener("click", createTaskObject)
 sortAZ.addEventListener("click", sortByName)
 sortDue.addEventListener("click", sortByDate)
 
-function createTaskObject(){
+function createTaskObject() {
     const liNew = document.createElement("li");
-    let taskName = taskInput.value; 
+    let taskName = taskInput.value;
     let dueDate = taskDate.value;
     let status = false;
     let editable = false;
-   
+
     let taskCreated = new TaskObj(taskName, dueDate, status, editable);
 
     //Add task to list
@@ -42,14 +42,14 @@ function createTaskObject(){
         taskList.appendChild(liNew);
         console.log(taskCreated);
         taskArr.push(taskCreated);
-        console.log (taskArr);
+        console.log(taskArr);
     } //add list item to taskList
     taskInput.value = "";
     liNew.className = "liNew";
 
     //date
     const dateOutput = document.createElement("span");
-    dateOutput.innerHTML = dueDate;
+    dateOutput.innerHTML = taskCreated.dueDate;
     dateOutput.className = "dateCol";
     liNew.appendChild(dateOutput);
 
@@ -62,15 +62,15 @@ function createTaskObject(){
     function tickItem(ev) {
         ev.target.classList.toggle('checked');
         taskOutput.classList.toggle('strike');
-        if (taskCreated.status === false){
+        if (taskCreated.status === false) {
             taskCreated.status = true;
         } else {
             taskCreated.status = false;
         }
-        console.log (taskCreated);
-        console.log (taskArr);
+        console.log(taskCreated);
+        console.log(taskArr);
     }
-  
+
     //edit
     const editButton = document.createElement("button");
     editButton.innerHTML = '&#128393';
@@ -78,7 +78,7 @@ function createTaskObject(){
     liNew.appendChild(editButton);
     editButton.addEventListener("click", editItem);
     function editItem() {
-        if (taskCreated.editable === false){
+        if (taskCreated.editable === false) {
             taskOutput.contentEditable = true;
             dateOutput.contentEditable = true;
             taskCreated.editable = true;
@@ -91,8 +91,8 @@ function createTaskObject(){
         }
         taskCreated.dueDate = dateOutput.innerHTML;
         taskCreated.taskName = taskOutput.innerHTML;
-        console.log (taskCreated);
-        console.log (taskArr);
+        console.log(taskCreated);
+        console.log(taskArr);
     }
 
     //delete from list
@@ -107,24 +107,78 @@ function createTaskObject(){
     }
 }
 
-function sortByName (){
-    taskArr.sort(function(a, b){
-        var taskNameA=a.taskName.toLowerCase(), taskNameB=b.taskName.toLowerCase()
-        if (taskNameA < taskNameB) //sort string ascending
-            return -1 
-        if (taskNameA > taskNameB)
+function sortByName() {
+    //sort list on UI by task name
+        var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+        list = taskList;
+        switching = true;
+        dir = "AZ";
+        while (switching) {
+            switching = false;
+            b = list.getElementsByTagName("li");
+            for (i = 0; i < (b.length - 1); i++) {
+                shouldSwitch = false;
+                if (dir == "AZ") {
+                    sortAZ.innerHTML = 'Sort Z-A';
+                    //sort objects within array by task name A-Z
+                    taskArr.sort(function (a, b) {
+                        var taskNameA = a.taskName.toLowerCase(), taskNameB = b.taskName.toLowerCase()
+                        if (taskNameA < taskNameB)
+                            return -1
+                        if (taskNameA > taskNameB)
+                            return 1
+                        return 0
+                    })
+                    if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "ZA") {
+                    sortAZ.innerHTML = 'Sort A-Z';
+                    //sort objects within array by task name Z-A
+                    taskArr.sort(function (a, b) {
+                        var taskNameA = a.taskName.toLowerCase(), taskNameB = b.taskName.toLowerCase()
+                        if (taskNameB < taskNameA)
+                            return -1
+                        if (taskNameB > taskNameA)
+                            return 1
+                        return 0
+                    })
+                    if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                switching = true;
+                switchcount++;
+            } else {
+                if (switchcount == 0 && dir == "AZ") {
+                    dir = "ZA";
+                    switching = true;
+                }
+            }
+        }
+    console.log(taskArr);
+}
+
+function sortByDate() {
+    //sort objects within array by date
+    taskArr.sort(function (a, b) {
+        var dueDateA = new Date(a.dueDate), dueDateB = new Date(b.dueDate)
+        return dueDateA - dueDateB
+    })
+    //sort list on UI by date
+    liNew.sort(function (a, b) {
+        var taskDateA = a.taskDate.toLowerCase(), taskDateB = b.taskDate.toLowerCase()
+        if (taskDateA < taskDateB)
+            return -1
+        if (taskDateA > taskDateB)
             return 1
         return 0
     })
-    function sortListAZ() {
-      }
-    console.log (taskArr)
-}
-
-function sortByDate (){
-    taskArr.sort(function(a, b){
-        var dueDateA=new Date(a.dueDate), dueDateB=new Date(b.dueDate)
-        return dueDateA-dueDateB
-    }) 
-    console.log (taskArr)
+    sortListByDate()
+    console.log(taskArr)
 }
