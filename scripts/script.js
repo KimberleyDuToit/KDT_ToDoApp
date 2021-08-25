@@ -34,6 +34,7 @@ else { //pushes the stored elements to taskArr
     let dueDate = this.dueDate;
     let status = this.status;
     let editable = this.editable;
+    console.log(ele);
 
     let taskCreated = ele;
         //Add task to list
@@ -62,16 +63,27 @@ else { //pushes the stored elements to taskArr
     doneButton.className = "done";
     liNew.prepend(doneButton);
     doneButton.addEventListener("click", tickItem)
-    function tickItem(ev) {
-        ev.target.classList.toggle('checked');
-        taskOutput.classList.toggle('strike');
+    if (taskCreated.status === false) {
+        doneButton.checked = false;
+        taskOutput.style.textDecoration = "none";
+        console.log ('False After Reload');
+    } else {
+        doneButton.checked = true;
+        taskOutput.style.textDecoration = "line-through";
+        console.log ('True After Reload');
+    }
+    function tickItem() {
+        //taskOutput.classList.toggle('strike');//
         if (taskCreated.status === false) {
             taskCreated.status = true;
+            taskOutput.style.textDecoration = "line-through";
         } else {
             taskCreated.status = false;
+            taskOutput.style.textDecoration = "none";
         }
         console.log(taskCreated);
         console.log(taskArr);
+        console.log ('Clicked After Reload');
         save()
     }
 
@@ -82,15 +94,15 @@ else { //pushes the stored elements to taskArr
     liNew.appendChild(editButton);
     editButton.addEventListener("click", editItem);
     function editItem() {
-        if (taskCreated.editable === false) {
+        if (editable === false) {
             taskOutput.contentEditable = true;
             dateOutput.contentEditable = true;
-            taskCreated.editable = true;
+            editable = true;
             liNew.style.backgroundColor = "#dddbdb";
         } else {
             taskOutput.contentEditable = false;
             dateOutput.contentEditable = false;
-            taskCreated.editable = false;
+            editable = false;
             liNew.style.backgroundColor = "#efefef";
         }
         taskCreated.dueDate = dateOutput.innerHTML;
@@ -163,16 +175,18 @@ function createTaskObject() {
     doneButton.className = "done";
     liNew.prepend(doneButton);
     doneButton.addEventListener("click", tickItem)
-    function tickItem(ev) {
-        ev.target.classList.toggle('checked');
-        taskOutput.classList.toggle('strike');
+    function tickItem() {
+        //taskOutput.classList.toggle('strike');//
         if (taskCreated.status === false) {
             taskCreated.status = true;
+            taskOutput.style.textDecoration = "line-through";
         } else {
             taskCreated.status = false;
+            taskOutput.style.textDecoration = "none";
         }
         console.log(taskCreated);
         console.log(taskArr);
+        console.log ('Standard on click');
         save()
     }
 
