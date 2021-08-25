@@ -57,7 +57,7 @@ else { //pushes the stored elements to taskArr
     dateOutput.className = "dateCol";
     liNew.appendChild(dateOutput);
 
-    //tick box - does not update the array
+    //tick box
     const doneButton = document.createElement("input");
     doneButton.setAttribute("type", "checkbox");
     doneButton.className = "done";
@@ -118,8 +118,16 @@ else { //pushes the stored elements to taskArr
     liNew.appendChild(deleteButton);
     deleteButton.addEventListener("click", removeItem)
     function removeItem() {
+        //remove from UI
         let div = this.parentElement;
-        div.style.display = "none";
+        div.style.display = "none";//
+        
+        //find index number of item and splice
+        let idxNum = taskArr.findIndex(item => item.taskName === taskOutput.innerHTML);
+        console.log (idxNum);
+        taskArr.splice(idxNum, 1);
+        console.log (taskArr);
+        save()
     }
     });
 }
@@ -221,8 +229,16 @@ function createTaskObject() {
     liNew.appendChild(deleteButton);
     deleteButton.addEventListener("click", removeItem)
     function removeItem() {
+        //remove from UI
         let div = this.parentElement;
-        div.style.display = "none";
+        div.style.display = "none";//
+        
+        //find index number of item and splice
+        let idxNum = taskArr.findIndex(item => item.taskName === taskOutput.innerHTML);
+        console.log (idxNum);
+        taskArr.splice(idxNum, 1);
+        console.log (taskArr);
+        save()
     }
 
     //save on task creation
