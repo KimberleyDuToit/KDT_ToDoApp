@@ -9,10 +9,10 @@ const sortDue = document.getElementById("sortDate");
 
 //Class for tasks
 class TaskObj {
-    constructor(taskName, dueDate, status, editable) {
+    constructor(taskName, dueDate, complete, editable) {
         this.taskName = taskName;
         this.dueDate = dueDate;
-        this.status = status;
+        this.complete = complete;
         this.editable = editable;
     }
 }
@@ -32,9 +32,8 @@ else { //pushes the stored elements to taskArr
     const liNew = document.createElement("li");
     let taskName = this.taskName;
     let dueDate = this.dueDate;
-    let status = this.status;
+    let complete = this.complete;
     let editable = this.editable;
-    console.log(ele);
 
     let taskCreated = ele;
         //Add task to list
@@ -63,27 +62,24 @@ else { //pushes the stored elements to taskArr
     doneButton.className = "done";
     liNew.prepend(doneButton);
     doneButton.addEventListener("click", tickItem)
-    if (taskCreated.status === false) {
+    if (taskCreated.complete === false) {
         doneButton.checked = false;
         taskOutput.style.textDecoration = "none";
-        console.log ('False After Reload');
     } else {
         doneButton.checked = true;
         taskOutput.style.textDecoration = "line-through";
-        console.log ('True After Reload');
     }
     function tickItem() {
         //taskOutput.classList.toggle('strike');//
-        if (taskCreated.status === false) {
-            taskCreated.status = true;
+        if (taskCreated.complete === false) {
+            taskCreated.complete = true;
             taskOutput.style.textDecoration = "line-through";
         } else {
-            taskCreated.status = false;
+            taskCreated.complete = false;
             taskOutput.style.textDecoration = "none";
         }
         console.log(taskCreated);
         console.log(taskArr);
-        console.log ('Clicked After Reload');
         save()
     }
 
@@ -94,15 +90,15 @@ else { //pushes the stored elements to taskArr
     liNew.appendChild(editButton);
     editButton.addEventListener("click", editItem);
     function editItem() {
-        if (editable === false) {
+        if (taskCreated.editable === false) {
             taskOutput.contentEditable = true;
             dateOutput.contentEditable = true;
-            editable = true;
+            taskCreated.editable = true;
             liNew.style.backgroundColor = "#dddbdb";
         } else {
             taskOutput.contentEditable = false;
             dateOutput.contentEditable = false;
-            editable = false;
+            taskCreated.editable = false;
             liNew.style.backgroundColor = "#efefef";
         }
         taskCreated.dueDate = dateOutput.innerHTML;
@@ -149,10 +145,10 @@ function createTaskObject() {
     const liNew = document.createElement("li");
     let taskName = taskInput.value;
     let dueDate = taskDate.value;
-    let status = false;
+    let complete = false;
     let editable = false;
 
-    let taskCreated = new TaskObj(taskName, dueDate, status, editable);
+    let taskCreated = new TaskObj(taskName, dueDate, complete, editable);
 
     //Add task to list
     const taskOutput = document.createElement("span");
@@ -185,16 +181,15 @@ function createTaskObject() {
     doneButton.addEventListener("click", tickItem)
     function tickItem() {
         //taskOutput.classList.toggle('strike');//
-        if (taskCreated.status === false) {
-            taskCreated.status = true;
+        if (taskCreated.complete === false) {
+            taskCreated.complete = true;
             taskOutput.style.textDecoration = "line-through";
         } else {
-            taskCreated.status = false;
+            taskCreated.complete = false;
             taskOutput.style.textDecoration = "none";
         }
         console.log(taskCreated);
         console.log(taskArr);
-        console.log ('Standard on click');
         save()
     }
 
