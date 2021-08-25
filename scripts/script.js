@@ -308,7 +308,7 @@ function sortByDate() {
         return dueDateA - dueDateB
     })
     //sort list on UI by date
-    liNew.sort(function (a, b) {
+    taskList.sort(function (a, b) {
         var taskDateA = a.taskDate.toLowerCase(), taskDateB = b.taskDate.toLowerCase()
         if (taskDateA < taskDateB)
             return -1
@@ -316,15 +316,5 @@ function sortByDate() {
             return 1
         return 0
     })
-    sortListByDate()
-    console.log(taskArr)
+console.log(taskArr)
 }
-
-/*//storing array
-if (taskArr.length > 0) {
-let taskArrStorage = JSON.stringify(taskArr);
-localStorage.setItem("taskArrStorage", taskArrStorage);
-console.log('array saved at end')
-} else {
-    console.log ('No array saved')
-}*/
