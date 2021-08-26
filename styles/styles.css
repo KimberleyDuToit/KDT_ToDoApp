@@ -17,19 +17,23 @@
 }
 
 .addPanel {
-    background-color: #238f77;
+    background-color: #1aa196;
     background-position: center;
     background-size: cover;
     display:flex;
     flex-wrap: wrap;
 }
 
+h1 {
+    padding-top: 20px;
+}
 
 h2 {
     font-family:'Montserrat';
     font-size:28px;
-    padding-top:15px;
+    padding-bottom:10px;
     color: #fff;
+    padding-top:20px;
 }
 
 h2#tasks {
@@ -181,20 +185,21 @@ ul {
     grid-column-start: 5;
     grid-column-end: 5;
     border-radius: 3px;
-    background-color: rgb(161, 161, 161);
+    background-color: #1d1d1d;
     border-style: none;
     width: 40px;
     height: 40px;
     font-size: 20px;
     margin-left: auto;
     margin-right: auto;
+    color:rgb(192, 192, 192);
 }
 
 .edit {
     grid-column-start: 4;
     grid-column-end: 4;
     border-radius: 3px;
-    background-color: rgb(161, 161, 161);
+    background-color:#4abb99;
     border-style: none;
     width: 40px;
     height: 40px;
@@ -203,18 +208,8 @@ ul {
     margin-right: auto;
 }
 
-
-
-a:link {
-    color: rgb(255, 255, 255);
-}
-  
-a:visited {
-    color: rgb(192, 192, 192);
-}
-  
-a:hover {
-    color: #0fc286;
+.edit:hover{
+    background-color: #56dab2;
 }
 
 a {
@@ -230,15 +225,13 @@ a {
 }    
 
 a#backtotop:link {
-    color: #9e4e38;
+    color: #4abb99;
 }
-
 a#backtotop:visited {
-    color: #9e4e38;
+    color: #4abb99;
 }
-
 a#backtotop:hover {
-    color: #fbad8e;
+    color: #56dab2;
 }
 
 
