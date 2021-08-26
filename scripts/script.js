@@ -302,19 +302,60 @@ function sortByName() {
 }
 
 function sortByDate() {
-    //sort objects within array by date
-    taskArr.sort(function (a, b) {
-        var dueDateA = new Date(a.dueDate), dueDateB = new Date(b.dueDate)
-        return dueDateA - dueDateB
-    })
-    //sort list on UI by date
-    taskList.sort(function (a, b) {
-        var taskDateA = a.taskDate.toLowerCase(), taskDateB = b.taskDate.toLowerCase()
-        if (taskDateA < taskDateB)
-            return -1
-        if (taskDateA > taskDateB)
-            return 1
-        return 0
-    })
+  //sort list on UI by date
+    var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+    list = taskList;
+    switching = true;
+    dir = "soonest";
+    let dateCol = document.getElementsByClassName ("dateCol");
+    while (switching) {
+        switching = false;
+        b = document.getElementsByTagName("li")
+        for (i = 0; i < (b.length - 1); i++) {
+            shouldSwitch = false;
+            if (dir == "soonest") {
+                sortDue.innerHTML = 'Sort By Date: Latest';
+                    //sort objects within array by date soonest
+                    taskArr.sort(function (a, b) {
+                    var dueDateA = a.dueDate.toLowerCase(), dueDateB = b.dueDate.toLowerCase()
+                    if (dueDateA < dueDateB)
+                        return -1
+                    if (dueDateA > dueDateB)
+                        return 1
+                    return 0
+                })
+                    if (dateCol[i].innerHTML.toLowerCase() > dateCol[i + 1].innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "latest") {
+                sortDue.innerHTML = 'Sort By Date: Soonest';
+                //sort objects within array by date latest
+                taskArr.sort(function (a, b) {
+                    var dueDateA = a.dueDate.toLowerCase(), dueDateB = b.dueDate.toLowerCase()
+                    if (dueDateB < dueDateA)
+                        return -1
+                    if (dueDateB > dueDateA)
+                        return 1
+                    return 0
+                })
+                if (dateCol[i].innerHTML.toLowerCase() < dateCol[i + 1].innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        if (shouldSwitch) {
+            b[i].parentNode.insertBefore(b[i + 1], b[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount == 0 && dir == "soonest") {
+                dir = "latest";
+                switching = true;
+            }
+        }
+    }
+    save()
 console.log(taskArr)
 }
