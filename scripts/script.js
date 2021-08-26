@@ -32,8 +32,6 @@ else { //pushes the stored elements to taskArr
     const liNew = document.createElement("li");
     let taskName = this.taskName;
     let dueDate = this.dueDate;
-    let complete = this.complete;
-    let editable = this.editable;
 
     let taskCreated = ele;
         //Add task to list
@@ -299,12 +297,12 @@ function sortByName() {
         }
     }
     save()
+    console.log(taskArr)
 }
 
 function sortByDate() {
   //sort list on UI by date
-    var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
-    list = taskList;
+    var i, switching, b, shouldSwitch, dir, switchcount = 0;
     switching = true;
     dir = "soonest";
     let dateCol = document.getElementsByClassName ("dateCol");
