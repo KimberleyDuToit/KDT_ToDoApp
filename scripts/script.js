@@ -6,7 +6,6 @@ const taskList = document.getElementById("taskList");
 const sortAZ = document.getElementById("sort");
 const sortDue = document.getElementById("sortDate");
 
-
 //Class for tasks
 class TaskObj {
     constructor(taskName, dueDate, complete, editable) {
@@ -21,124 +20,127 @@ class TaskObj {
 let taskArr = [];
 let taskSaved = localStorage.getItem("taskArrStorage");
 let taskLoad = JSON.parse(taskSaved);
-if (taskLoad === null) {
-    console.log('No objects in array')
-}
-else { //pushes the stored elements to taskArr
-    taskArr.push(...taskLoad);
-    console.log(taskArr);
-    taskArr.forEach(ele => {
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    const liNew = document.createElement("li");
-    let taskName = this.taskName;
-    let dueDate = this.dueDate;
-
-    let taskCreated = ele;
-        //Add task to list
-    const taskOutput = document.createElement("span");
-    taskOutput.innerHTML = taskCreated.taskName;
-    taskOutput.className = "task";
-    liNew.appendChild(taskOutput);
-    if (taskName === '' || dueDate === '') {
-        alert("Please enter a task name and due date.");
-    } //in case field is empty upon add
-    else {
-        taskList.appendChild(liNew);
-    } //add list item to taskList
-    taskInput.value = "";
-    liNew.className = "liNew";
-
-    //date
-    const dateOutput = document.createElement("span");
-    dateOutput.innerHTML = taskCreated.dueDate;
-    dateOutput.className = "dateCol";
-    liNew.appendChild(dateOutput);
-
-    //tick box
-    const doneButton = document.createElement("input");
-    doneButton.setAttribute("type", "checkbox");
-    doneButton.className = "done";
-    liNew.prepend(doneButton);
-    doneButton.addEventListener("click", tickItem)
-    if (taskCreated.complete === false) {
-        doneButton.checked = false;
-        taskOutput.style.textDecoration = "none";
-    } else {
-        doneButton.checked = true;
-        taskOutput.style.textDecoration = "line-through";
-    }
-    function tickItem() {
-        //taskOutput.classList.toggle('strike');//
-        if (taskCreated.complete === false) {
-            taskCreated.complete = true;
-            taskOutput.style.textDecoration = "line-through";
-        } else {
-            taskCreated.complete = false;
-            taskOutput.style.textDecoration = "none";
-        }
-        console.log(taskCreated);
-        console.log(taskArr);
-        save()
-    }
-
-    //edit
-    const editButton = document.createElement("button");
-    editButton.innerHTML = '&#128393';
-    editButton.className = "edit";
-    liNew.appendChild(editButton);
-    editButton.addEventListener("click", editItem);
-    function editItem() {
-        if (taskCreated.editable === false) {
-            taskOutput.contentEditable = true;
-            dateOutput.contentEditable = true;
-            taskCreated.editable = true;
-            liNew.style.backgroundColor = "#dddbdb";
-        } else {
-            taskOutput.contentEditable = false;
-            dateOutput.contentEditable = false;
-            taskCreated.editable = false;
-            liNew.style.backgroundColor = "#efefef";
-        }
-        taskCreated.dueDate = dateOutput.innerHTML;
-        taskCreated.taskName = taskOutput.innerHTML;
-        console.log(taskCreated);
-        save()
-    }
-
-    //delete from list - works but does not remove item from array
-    const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = '\u00D7';
-    deleteButton.className = "remove";
-    liNew.appendChild(deleteButton);
-    deleteButton.addEventListener("click", removeItem)
-    function removeItem() {
-        //remove from UI
-        let div = this.parentElement;
-        div.style.display = "none";//
-        
-        //find index number of item and splice
-        let idxNum = taskArr.findIndex(item => item.taskName === taskOutput.innerHTML);
-        console.log (idxNum);
-        taskArr.splice(idxNum, 1);
-        console.log (taskArr);
-        save()
-    }
-    });
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//save array to storage
+//Save array to storage
 function save() {
     let taskArrStorage = JSON.stringify(taskArr);
     localStorage.setItem("taskArrStorage", taskArrStorage);
     console.log('Array Stored in Local')
 }
 
+/////////////////////////////////////////////////////////////////////////////
+
+//pushes the restored objects to taskArr and rebuilds list items in UI
+if (taskLoad === null) {
+    console.log('No objects in array')
+}
+else { 
+    taskArr.push(...taskLoad);
+    console.log(taskArr);
+    taskArr.forEach(ele => {
+        const liNew = document.createElement("li");
+        let taskName = this.taskName;
+        let dueDate = this.dueDate;
+
+        let taskCreated = ele;
+        //Add task to list
+        const taskOutput = document.createElement("span");
+        taskOutput.innerHTML = taskCreated.taskName;
+        taskOutput.className = "task";
+        liNew.appendChild(taskOutput);
+        if (taskName === '' || dueDate === '') {
+            alert("Please enter a task name and due date.");
+        } //in case field is empty upon add
+        else {
+            taskList.appendChild(liNew);
+        } //add list item to taskList
+        taskInput.value = "";
+        liNew.className = "liNew";
+
+        //date
+        const dateOutput = document.createElement("span");
+        dateOutput.innerHTML = taskCreated.dueDate;
+        dateOutput.className = "dateCol";
+        liNew.appendChild(dateOutput);
+
+        //tick box
+        const doneButton = document.createElement("input");
+        doneButton.setAttribute("type", "checkbox");
+        doneButton.className = "done";
+        liNew.prepend(doneButton);
+        doneButton.addEventListener("click", tickItem)
+        if (taskCreated.complete === false) {
+            doneButton.checked = false;
+            taskOutput.style.textDecoration = "none";
+        } else {
+            doneButton.checked = true;
+            taskOutput.style.textDecoration = "line-through";
+        }
+        function tickItem() {
+            if (taskCreated.complete === false) {
+                taskCreated.complete = true;
+                taskOutput.style.textDecoration = "line-through";
+            } else {
+                taskCreated.complete = false;
+                taskOutput.style.textDecoration = "none";
+            }
+            console.log(taskCreated);
+            console.log(taskArr);
+            save()
+        }
+
+        //edit
+        const editButton = document.createElement("button");
+        editButton.innerHTML = '&#128393';
+        editButton.className = "edit";
+        liNew.appendChild(editButton);
+        editButton.addEventListener("click", editItem);
+        function editItem() {
+            if (taskCreated.editable === false) {
+                taskOutput.contentEditable = true;
+                dateOutput.contentEditable = true;
+                taskCreated.editable = true;
+                liNew.style.backgroundColor = "#dddbdb";
+            } else {
+                taskOutput.contentEditable = false;
+                dateOutput.contentEditable = false;
+                taskCreated.editable = false;
+                liNew.style.backgroundColor = "#efefef";
+            }
+            taskCreated.dueDate = dateOutput.innerHTML;
+            taskCreated.taskName = taskOutput.innerHTML;
+            console.log(taskCreated);
+            save()
+        }
+
+        //delete from list
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = '\u00D7';
+        deleteButton.className = "remove";
+        liNew.appendChild(deleteButton);
+        deleteButton.addEventListener("click", removeItem)
+        function removeItem() {
+            //remove from UI
+            let div = this.parentElement;
+            div.style.display = "none";//
+
+            //find index number of item and splice
+            let idxNum = taskArr.findIndex(item => item.taskName === taskOutput.innerHTML);
+            console.log(idxNum);
+            taskArr.splice(idxNum, 1);
+            console.log(taskArr);
+            save()
+        }
+    });
+}
+/////////////////////////////////////////////////////////////////////////////
+
+
 //Onclick events
 addButton.addEventListener("click", createTaskObject)
 sortAZ.addEventListener("click", sortByName)
 sortDue.addEventListener("click", sortByDate)
 
+//Creates the list items (first time creation, on-click only)
 function createTaskObject() {
     const liNew = document.createElement("li");
     let taskName = taskInput.value;
@@ -225,12 +227,12 @@ function createTaskObject() {
         //remove from UI
         let div = this.parentElement;
         div.style.display = "none";//
-        
+
         //find index number of item and splice
         let idxNum = taskArr.findIndex(item => item.taskName === taskOutput.innerHTML);
-        console.log (idxNum);
+        console.log(idxNum);
         taskArr.splice(idxNum, 1);
-        console.log (taskArr);
+        console.log(taskArr);
         save()
     }
 
@@ -301,11 +303,11 @@ function sortByName() {
 }
 
 function sortByDate() {
-  //sort list on UI by date
+    //sort list on UI by date
     var i, switching, b, shouldSwitch, dir, switchcount = 0;
     switching = true;
     dir = "soonest";
-    let dateCol = document.getElementsByClassName ("dateCol");
+    let dateCol = document.getElementsByClassName("dateCol");
     while (switching) {
         switching = false;
         b = document.getElementsByTagName("li")
@@ -313,8 +315,8 @@ function sortByDate() {
             shouldSwitch = false;
             if (dir == "soonest") {
                 sortDue.innerHTML = 'Sort By Date: Latest';
-                    //sort objects within array by date soonest
-                    taskArr.sort(function (a, b) {
+                //sort objects within array by date soonest
+                taskArr.sort(function (a, b) {
                     var dueDateA = a.dueDate.toLowerCase(), dueDateB = b.dueDate.toLowerCase()
                     if (dueDateA < dueDateB)
                         return -1
@@ -322,7 +324,7 @@ function sortByDate() {
                         return 1
                     return 0
                 })
-                    if (dateCol[i].innerHTML.toLowerCase() > dateCol[i + 1].innerHTML.toLowerCase()) {
+                if (dateCol[i].innerHTML.toLowerCase() > dateCol[i + 1].innerHTML.toLowerCase()) {
                     shouldSwitch = true;
                     break;
                 }
@@ -355,5 +357,5 @@ function sortByDate() {
         }
     }
     save()
-console.log(taskArr)
+    console.log(taskArr)
 }
