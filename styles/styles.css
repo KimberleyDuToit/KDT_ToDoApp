@@ -1,3 +1,7 @@
+body {
+    background-color: #efefef;  
+}
+
 .fullpage {
     background-color: #efefef;
     font-family: 'Montserrat', sans-serif;
@@ -17,23 +21,25 @@
 }
 
 .addPanel {
-    background-color: #1aa196;
-    background-position: center;
-    background-size: cover;
+    background-color: #00635a;
     display:flex;
     flex-wrap: wrap;
 }
 
+div#addNew {
+    padding-bottom: 10px;
+}
+
 h1 {
-    padding-top: 20px;
+  padding-top: 10px;
 }
 
 h2 {
     font-family:'Montserrat';
-    font-size:28px;
+    font-size:26px;
     padding-bottom:10px;
     color: #fff;
-    padding-top:20px;
+    padding-top:30px;
 }
 
 h2#tasks {
@@ -82,7 +88,7 @@ h4 {
    margin-right:20px;
    margin-bottom: 20px;
    padding-left: 20px;
-    padding-right: 20px;
+   padding-right: 20px;
 }
 
 #date {
@@ -165,6 +171,7 @@ ul {
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
+    filter: hue-rotate(310deg) brightness(1);
 }
 
 .task {
@@ -192,7 +199,7 @@ ul {
     font-size: 20px;
     margin-left: auto;
     margin-right: auto;
-    color:rgb(192, 192, 192);
+    color:#fff;
 }
 
 .edit {
@@ -206,18 +213,31 @@ ul {
     font-size: 20px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: bold;
 }
 
 .edit:hover{
     background-color: #56dab2;
 }
 
+.btn#sort:hover{
+    background-color: #56dab2;
+}
+
+.btn#sortDate:hover{
+    background-color: #56dab2;
+}
+
+.remove:hover{
+    background-color: #424242;
+}
+
 a {
     text-decoration: none;
 }
 
-.btn#Add:hover {
-    background-color: #ff9a15
+.btn#add:hover {
+    background-color: #ffbb00
 }
 
 .content {
@@ -244,10 +264,22 @@ a#backtotop:hover {
         margin-bottom: 20px;
         margin-top: 20px;
     }
+
     #addNew{
         width:100%;
         display: block;
     }
+
+
+    #writeTaskName{
+        width:50%;
+    }
+
+    #date{
+        width:45%;
+        margin-right: 0px;
+    }
+
     .btn#add{
         flex: none;
         height:40px;
@@ -258,6 +290,7 @@ a#backtotop:hover {
         color: #1d1d1d;
         font-size:18px;
         max-width: 200px;
+        margin-bottom: 20px;
      }
      
     .content {
@@ -267,8 +300,53 @@ a#backtotop:hover {
     }   
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 611px) {
+    .liNew {
+        display: grid;
+        grid-template-columns: 5% 40% 20% 5% 14% 14%;
+        grid-column-gap: 2%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
 
+    #addNew{
+        width:100%;
+        display: block;
+    }
+
+    #writeTaskName{
+        width:50%;
+    }
+
+    #date{
+        width:45%;
+        margin-right: 0px;
+    }
+
+    .btn#add{
+        flex: none;
+        height:40px;
+        background-color: #ffcf2f;
+        font-family: 'Montserrat', sans-serif;
+        font-weight:bold;
+        border-width: 0px;
+        color: #1d1d1d;
+        font-size:18px;
+        max-width: 200px;
+        margin-bottom: 20px;
+     }
+    
+    h2 {
+        margin-top: 10px;
+    } 
+
+     .btn#sort {
+        height: 60px;
+    } 
+
+    .btn#sortDate {
+        height: 60px;
+    } 
 
     .content {
         width:100%;
@@ -276,4 +354,157 @@ a#backtotop:hover {
         padding-right: 4%;
     }   
 }
+
+@media only screen and (max-width: 567px) {
+    .liNew {
+        display: grid;
+        grid-template-columns: 10% 60% 30%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .done {
+    margin-right: 30px;
+    }
+
+    .edit {
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        margin-left:0px;
+        margin-right:0px;
+    }
+
+    .remove {
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        margin-left:50px;
+        margin-right:0px;  
+    }
+
+    #addNew{
+        width:100%;
+        display: block;
+    }
+
+    #writeTaskName{
+        width:100%;
+    }
+
+    #date{
+        width:100%;
+        margin-right: 0px;
+    }
+
+    .btn#add{
+        flex: none;
+        height:40px;
+        background-color: #ffcf2f;
+        font-family: 'Montserrat', sans-serif;
+        font-weight:bold;
+        border-width: 0px;
+        color: #1d1d1d;
+        font-size:18px;
+        max-width: 200px;
+        margin-bottom: 20px;
+     }
+    
+    h2 {
+        margin-top: 10px;
+    } 
+
+     .btn#sort {
+        height: 60px;
+    } 
+
+    .btn#sortDate {
+        height: 60px;
+    } 
+
+    .content {
+        width:100%;
+        padding-left: 4%;
+        padding-right: 4%;
+    }   
+}
+
+@media only screen and (max-width: 433px) {
+    .liNew {
+        display: grid;
+        grid-template-columns: 10% 60% 30%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .done {
+    margin-right: 30px;
+    }
+
+    .edit {
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        margin-left:0px;
+        margin-right:0px;
+    }
+
+    .remove {
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        margin-left:50px;
+        margin-right:0px;  
+    }
+
+    #addNew{
+        width:100%;
+        display: block;
+    }
+
+    #writeTaskName{
+        width:100%;
+    }
+
+    #date{
+        width:100%;
+        margin-right: 0px;
+    }
+
+    .btn#add{
+        flex: none;
+        height:40px;
+        background-color: #ffcf2f;
+        font-family: 'Montserrat', sans-serif;
+        font-weight:bold;
+        border-width: 0px;
+        color: #1d1d1d;
+        font-size:18px;
+        max-width: 200px;
+        margin-bottom: 20px;
+     }
+    
+    h2 {
+        margin-top: 10px;
+    } 
+
+     .btn#sort {
+        height: 80px;
+    } 
+
+    .btn#sortDate {
+        height: 80px;
+    } 
+
+    .content {
+        width:100%;
+        padding-left: 4%;
+        padding-right: 4%;
+    }   
+}
+
 
