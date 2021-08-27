@@ -105,7 +105,7 @@ h4 {
     max-width: 400px;
  }
 
- .btn#add{
+ .btn#add {
     flex:1;
     height:40px;
     background-color: #ffcf2f;
@@ -117,7 +117,7 @@ h4 {
     max-width: 200px;
  }
 
- .btn#sort{
+.btn#sort{
     height:40px;
     background-color: #4abb99;
     font-family: 'Montserrat', sans-serif;
@@ -128,8 +128,9 @@ h4 {
     max-width: 200px;
     flex: 1;
     margin-right: 20px;
- }
- .btn#sortDate{
+}
+
+.btn#sortDate {
     height:40px;
     background-color: #4abb99;
     font-family: 'Montserrat', sans-serif;
@@ -138,8 +139,7 @@ h4 {
     color: #1d1d1d;
     font-size:14px;
     max-width: 200px;
-    flex: 1;
- }
+    flex: 1;}
  
 #menuheading {
     padding-left:30px;
@@ -216,19 +216,19 @@ ul {
     font-weight: bold;
 }
 
-.edit:hover{
+.edit:hover {
     background-color: #56dab2;
 }
 
-.btn#sort:hover{
+.btn#sort:hover {
     background-color: #56dab2;
 }
 
-.btn#sortDate:hover{
+.btn#sortDate:hover {
     background-color: #56dab2;
 }
 
-.remove:hover{
+.remove:hover {
     background-color: #424242;
 }
 
@@ -291,11 +291,12 @@ a#backtotop:hover {
         font-size:18px;
         max-width: 200px;
         margin-bottom: 20px;
-     }
+    }
      
-     .remove{
+    .remove{
          margin-left:20px;
-     }
+    }
+
     .content {
         width:100%;
         padding-left: 4%;
@@ -360,13 +361,13 @@ a#backtotop:hover {
         font-size:18px;
         max-width: 200px;
         margin-bottom: 20px;
-     }
+    }
     
     h2 {
         margin-top: 10px;
     } 
 
-     .btn#sort {
+    .btn#sort {
         height: 60px;
     } 
 
@@ -392,7 +393,7 @@ a#backtotop:hover {
     .done {
     margin-right: 30px;
     }
-    #date{
+    #date {
         width:100%;
         margin-right: 0px;
     }
@@ -414,12 +415,12 @@ a#backtotop:hover {
         margin-right:0px;  
     }
 
-    #addNew{
+    #addNew {
         width:100%;
         display: block;
     }
 
-    .btn#add{
+    .btn#add {
         flex: none;
         height:40px;
         background-color: #ffcf2f;
@@ -432,11 +433,11 @@ a#backtotop:hover {
         margin-bottom: 20px;
      }
 
-    #writeTaskName{
+    #writeTaskName {
         width:100%;
     }
 
-    .dateCol{   
+    .dateCol {   
         margin-right: 0px;
         grid-column-start: 2;
         grid-column-end: 2;
@@ -444,7 +445,7 @@ a#backtotop:hover {
         grid-row-end: 2;
     }
 
-    .btn#add{
+    .btn#add {
         flex: none;
         height:40px;
         background-color: #ffcf2f;
@@ -461,7 +462,7 @@ a#backtotop:hover {
         margin-top: 10px;
     } 
 
-     .btn#sort {
+    .btn#sort {
         height: 60px;
     } 
 
@@ -506,7 +507,7 @@ a#backtotop:hover {
         margin-right:0px;  
     }
 
-    #addNew{
+    #addNew {
         width:100%;
         display: block;
     }
@@ -522,12 +523,13 @@ a#backtotop:hover {
     h2#tasks {
         display:block;
     }
+
     #tHeaders {
         display:grid;
         grid-template-columns: 50% 50%;
         grid-column-gap: 20px;
     }
-    .btn#add{
+    .btn#add {
         flex: none;
         height:40px;
         background-color: #ffcf2f;
@@ -538,13 +540,13 @@ a#backtotop:hover {
         font-size:18px;
         max-width: 200px;
         margin-bottom: 20px;
-     }
+    }
     
     h2 {
         margin-top: 10px;
     } 
 
-     .btn#sort {
+    .btn#sort {
         height: 60px;
         grid-row-start: 2;
         grid-row-end: 2;
